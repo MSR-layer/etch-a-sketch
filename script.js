@@ -62,7 +62,14 @@ initialize();
 const clearButton = document.getElementById('clear');
 const rainbowButton = document.getElementById('rainbow');
 const monoButton = document.getElementById('monochrome');
+const slider = document.getElementById('slider');
 
+let output = document.getElementById('output');
+
+output.textContent = slider.value;
+slider.oninput = function(){
+    output.textContent = this.value;
+};
 
 
 const divList = Array.from(document.querySelectorAll('.grid-cell'));

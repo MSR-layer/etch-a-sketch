@@ -1,3 +1,9 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #grid{
     width: 700px;
     height:700px;
@@ -12,4 +18,3 @@
     border-width: 1px;
     border-color: black;
 }
-

@@ -1,3 +1,11 @@
+/**
+ * TO-DO:
+ * add clear button []
+ * add slider for number of cells per side []
+ * 
+ */
+
+
 function initialize()
 {
     let columns = prompt("how many rows and columns?");
@@ -8,13 +16,8 @@ function initialize()
 
     let container = document.getElementById('grid');
 
-    let str = '';
-
-    for(let i=0;i<columns;i++) str += ' auto';
-
-    container.style.gridTemplateColumns = str;
-
-
+    container.style.gridTemplateColumns = `repeat(${columns},1fr)`;
+    
     for(let j=0;j<columns*columns;j++){
         let cell = document.createElement('div');
         cell.classList.add('grid-cell');
@@ -31,3 +34,4 @@ initialize();
 const divList = Array.from(document.querySelectorAll('.grid-cell'));
 
 divList.forEach(div => div.addEventListener('mouseover', onHover));
+

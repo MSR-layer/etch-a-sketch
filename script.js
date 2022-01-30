@@ -8,24 +8,35 @@
  * fix css[]
  */
 
+const DEFAULT_AMOUNT = 50;
 
-function initialize()
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function initialize(amount)
 {
-    let columns = prompt("how many rows and columns?");
+    // let columns = prompt("how many rows and columns?");
 
-    while(columns >= 100 && columns <= 0 )
-        columns = prompt("please enter valid value between 0 and 100");
+    // while(columns >= 100 && columns <= 0 )
+    //     columns = prompt("please enter valid value between 0 and 100");
 
 
     let container = document.getElementById('grid');
 
-    container.style.gridTemplateColumns = `repeat(${columns},1fr)`;
+    if(container.firstChild)
+        removeAllChildNodes(container);
 
-    for(let j=0;j<columns*columns;j++){
+    container.style.gridTemplateColumns = `repeat(${amount},1fr)`;
+
+    for(let j=0;j<amount*amount;j++){
         let cell = document.createElement('div');
         cell.classList.add('grid-cell');
         container.append(cell);
     }
+
 }
 
 function mono(){
@@ -81,7 +92,7 @@ function sketch(){
     }
 }
 
-initialize();
+initialize(DEFAULT_AMOUNT);
 
 const clearButton = document.getElementById('clear');
 const rainbowButton = document.getElementById('rainbow');
@@ -93,13 +104,21 @@ const slider = document.getElementById('slider');
 
 let output = document.getElementById('output');
 
+
+
 output.textContent = slider.value;
+
+
+
 slider.oninput = function(){
     output.textContent = this.value;
+    initialize(this.value);
+    divList = Array.from(document.querySelectorAll('.grid-cell'));
+    divList.forEach(div => div.addEventListener('mouseover', mono));
 };
 
 
-const divList = Array.from(document.querySelectorAll('.grid-cell'));
+let divList = Array.from(document.querySelectorAll('.grid-cell'));
 
 divList.forEach(div => div.addEventListener('mouseover', mono));
 

@@ -1,7 +1,7 @@
 /**
  * TO-DO:
  * add clear button [x]
- * add slider for number of cells per side []
+ * add slider for number of cells per side [x]
  * add rainbow option [x]
  * add eraser [x]
  * add color picker[x]
@@ -9,6 +9,8 @@
  */
 
 const DEFAULT_AMOUNT = 50;
+const DEFAULT_BACKGROUND_COLOR = '#FBF8F1';
+const DEFAULT_COLOR = '#3d231e';
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -18,12 +20,6 @@ function removeAllChildNodes(parent) {
 
 function initialize(amount)
 {
-    // let columns = prompt("how many rows and columns?");
-
-    // while(columns >= 100 && columns <= 0 )
-    //     columns = prompt("please enter valid value between 0 and 100");
-
-
     let container = document.getElementById('grid');
 
     if(container.firstChild)
@@ -40,11 +36,12 @@ function initialize(amount)
 }
 
 function mono(){
-    this.style.backgroundColor = 'black';
+    //this.style.backgroundColor = 'black';
+    this.style.backgroundColor = '#3d231e';
 }
 
 function clear(){
-    divList.forEach(div => div.style.backgroundColor = 'white');
+    divList.forEach(div => div.style.backgroundColor = DEFAULT_BACKGROUND_COLOR);
 }
 
 function randomColorGenerator(){
@@ -53,7 +50,6 @@ function randomColorGenerator(){
     randomNumber = Math.floor(randomNumber);
     randomNumber = randomNumber.toString(16);
     let randomColor = randomNumber.padStart(6,0);
-    console.log(randomColor);
     return `#${randomColor}`;
 }
 
@@ -67,7 +63,7 @@ function color(){
 }
 
 function eraser(){
-    this.style.backgroundColor = 'white';
+    this.style.backgroundColor = DEFAULT_BACKGROUND_COLOR;
 }
 
 function sketch(){
@@ -106,12 +102,12 @@ let output = document.getElementById('output');
 
 
 
-output.textContent = slider.value;
+output.textContent = `${slider.value} × ${slider.value}`;
 
 
 
 slider.oninput = function(){
-    output.textContent = this.value;
+    output.textContent = `${this.value} × ${this.value}`;
     initialize(this.value);
     divList = Array.from(document.querySelectorAll('.grid-cell'));
     divList.forEach(div => div.addEventListener('mouseover', mono));

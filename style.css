@@ -19,6 +19,7 @@ header {
     align-items: center;
     color: #3d231e;
     width: 100%;
+    font-size: 25px;
     margin: 0;
 }
 
@@ -34,11 +35,11 @@ header {
 }
 
 
-.grid-cell{
+/* .grid-cell{
     height: auto;
     width: auto;
   
-}
+} */
 
 #options{
     display: flex;
@@ -46,7 +47,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 100px 220px ;
+    margin: 100px 220px;
 }
 
 .hover-options {
@@ -82,9 +83,9 @@ header {
 #content {
     display: flex;
     width: 100%;
+    justify-content: flex-start;
+    align-content: center;
 }
-
-
 
 #color-input{
     border-radius: 50%;

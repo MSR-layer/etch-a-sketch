@@ -14,15 +14,15 @@
     <header><h1>Etch-a-Sketch</h1></header>
     <div id="content">
         <div id="options">
+            <input type="color" value="#000000"  id="color-input">
             <div id="slider-div">
                 <div id="output"></div>
                 <input type="range" min="1" max="100" value="50" id="slider">
-                
             </div>
             <button class = "hover-options" id="clear">Clear</button>
-            <button class = "hover-options" id="monochrome">Classic</button>
+            <button class = "hover-options selected" id="monochrome">Classic</button>
             <button class = "hover-options" id="rainbow">Rainbow</button>
-            <input type="color" value="#000000" class = "hover-options" id="color-input">
+            
             <button class = "hover-options" id="eraser">Eraser</button>
         </div>
         <div id="grid"></div>

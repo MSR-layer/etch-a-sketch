@@ -76,7 +76,12 @@ function sketch(){
     else if(palette === 'eraser')
         divList.forEach(div => div.removeEventListener('mouseover', eraser));
 
+    document.querySelector(`#${palette}`).classList.remove('selected');
+    
     palette = this.id;
+
+    this.classList.add('selected');
+
     if(this.id === 'monochrome'){
         divList.forEach(div => div.addEventListener('mouseover', mono));
     }else if(this.id === 'rainbow'){
@@ -112,6 +117,10 @@ slider.oninput = function(){
     divList = Array.from(document.querySelectorAll('.grid-cell'));
     divList.forEach(div => div.addEventListener('mouseover', mono));
 };
+
+function changeButtonColor(){
+    this.style.backgroundColor = 'black';
+}
 
 
 let divList = Array.from(document.querySelectorAll('.grid-cell'));
